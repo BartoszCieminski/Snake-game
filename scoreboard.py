@@ -1,6 +1,8 @@
-from turtle import Turtle
+from turtle import Turtle, heading
 ALIGNMENT = 'center'
 FONT = ("Arial", 20, "normal")
+
+
 
 class Scoreboard(Turtle):
     
@@ -26,4 +28,12 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.goto(0,0)
         self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+
+    def highest_score(self):
+        self.highest_point = 0
+        file1 = open('highest_score.txt', 'w')
+        if self.score < self.highest_point: 
+            file1.write(str(self.score))
+            file1.close()
+            self.highest_point = self.score
         
